@@ -70,7 +70,20 @@ async function readStudentsInfo() {
   const studentsData = await Student.find()
     .limit(4)
     .sort({ firstName: -1 })
-    .select({ firstName: 1, lastName: 1, hobbies: 1 });
+    .select({ firstName: 1, lastName: 1, hobbies: 1, passStatus: 1 });
+  // .countDocuments();
   console.log(studentsData);
 }
 readStudentsInfo();
+
+//=====> U = Update the students information
+async function updateStudentsInfo(id) {
+  const student = await Student.updateOne(
+    { _id: id },
+    {
+      $set: { passStatus: false },
+    }
+  );
+  console.log(student);
+}
+// updateStudentsInfo("624e7bb45d8f606a603e10c2");
