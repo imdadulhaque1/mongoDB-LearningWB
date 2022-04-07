@@ -60,8 +60,17 @@ async function createStudent() {
 // }
 // readAllStudentsInfo();
 
-async function readSingleStudentsInfo() {
-  const studentsData = await Student.find({ firstName: "Imdadul" });
+// async function readSingleStudentsInfo() {
+//   const studentsData = await Student.find({ firstName: "Imdadul" });
+//   console.log(studentsData);
+// }
+// readSingleStudentsInfo();
+
+async function readStudentsInfo() {
+  const studentsData = await Student.find()
+    .limit(4)
+    .sort({ firstName: -1 })
+    .select({ firstName: 1, lastName: 1, hobbies: 1 });
   console.log(studentsData);
 }
-readSingleStudentsInfo();
+readStudentsInfo();
