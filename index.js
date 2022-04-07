@@ -87,3 +87,10 @@ async function updateStudentsInfo(id) {
   console.log(student);
 }
 // updateStudentsInfo("624e7bb45d8f606a603e10c2");
+
+//=====> D = Delete the student information
+async function deleteStudentInfo(id) {
+  const student = await Student.deleteOne({ _id: id });
+  console.log(student);
+}
+// deleteStudentInfo("624e7bb45d8f606a603e10c2");
