@@ -54,8 +54,14 @@ async function createStudent() {
 // createStudent();
 
 //=====> R = Read the created collections
-async function readStudentsInfo() {
-  const studentsData = await Student.find();
+// async function readAllStudentsInfo() {
+//   const studentsData = await Student.find();
+//   console.log(studentsData);
+// }
+// readAllStudentsInfo();
+
+async function readSingleStudentsInfo() {
+  const studentsData = await Student.find({ firstName: "Imdadul" });
   console.log(studentsData);
 }
-readStudentsInfo();
+readSingleStudentsInfo();
