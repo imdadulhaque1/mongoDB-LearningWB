@@ -8,7 +8,7 @@ mongoose
     console.error("Connection Failed!");
   });
 
-//========> Schema -> defines the shape documents
+//!========> Schema -> defines the shape documents
 const studentSchema = new mongoose.Schema({
   firstName: String,
   lastName: String,
@@ -23,20 +23,20 @@ const studentSchema = new mongoose.Schema({
   subjects: [{ name: String, marks: { type: Number, min: 0, max: 100 } }],
 });
 
-//========> Model Create
+//TODO========> Model Create
 const Student = mongoose.model("Student", studentSchema);
 
-//=====> C = Create
+//TODO=====> C = Create
 async function createStudent() {
   const student = new Student({
-    firstName: "Enamul",
-    lastName: "Haque",
-    dob: new Date("07 April 2022"),
+    firstName: "Israt Jahan",
+    lastName: "Maisha",
+    dob: new Date("10 December 2019"),
     passStatus: true,
-    hobbies: ["Swimming", "Playing Football", "Travelling"],
+    hobbies: ["Swimming", "Reading Book", "Travelling"],
     parents: {
-      fatherName: "Ismail Hossain",
-      motherName: "Marzia Khatun",
+      fatherName: "Enamul Haque",
+      motherName: "Unknown",
     },
     subjects: [
       { name: "Computer Fundamental", marks: 75 },
@@ -53,11 +53,11 @@ async function createStudent() {
 }
 // createStudent();
 
-//=====> R = Read the created collections
-// async function readAllStudentsInfo() {
-//   const studentsData = await Student.find();
-//   console.log(studentsData);
-// }
+//TODO=====> R = Read the created collections
+async function readAllStudentsInfo() {
+  const studentsData = await Student.find();
+  console.log(studentsData);
+}
 // readAllStudentsInfo();
 
 // async function readSingleStudentsInfo() {
@@ -74,9 +74,9 @@ async function readStudentsInfo() {
   // .countDocuments();
   console.log(studentsData);
 }
-readStudentsInfo();
+// readStudentsInfo();
 
-//=====> U = Update the students information
+//TODO======> U = Update the students information
 async function updateStudentsInfo(id) {
   const student = await Student.updateOne(
     { _id: id },
@@ -86,9 +86,9 @@ async function updateStudentsInfo(id) {
   );
   console.log(student);
 }
-// updateStudentsInfo("624e7bb45d8f606a603e10c2");
+updateStudentsInfo("62514fffc701c15cf3ee0ce9");
 
-//=====> D = Delete the student information
+//TODO=====> D = Delete the student information
 async function deleteStudentInfo(id) {
   const student = await Student.deleteOne({ _id: id });
   console.log(student);
